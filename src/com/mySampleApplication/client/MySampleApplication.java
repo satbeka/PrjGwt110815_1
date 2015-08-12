@@ -4,9 +4,9 @@ import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.*;
 import com.google.gwt.user.client.rpc.AsyncCallback;
-import com.google.gwt.user.client.DOM;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.dom.client.ClickEvent;
+import com.mySampleApplication.client.common.FileLoad;
 
 /**
  * Entry point classes define <code>onModuleLoad()</code>
@@ -41,9 +41,18 @@ public class MySampleApplication implements EntryPoint {
 
         String url_test="http://www.kase.kz/files/for_shareholders/ustav.pdf";
 
+        final Label labelText = new Label("Load from Url: ");
+        TextBox textBox = new TextBox();
+        textBox.setText(url_test);
+        textBox.setVisibleLength(100);
+        textBox.setTitle("Load from Url: ");
+
+        //set style name for entire widget
+        labelText.addStyleName("gwt-Label");
 
 
         VerticalPanel panel = new VerticalPanel();
+
         //create a FormPanel
         final FormPanel form = new FormPanel();
         //create a file upload widget
@@ -54,7 +63,7 @@ public class MySampleApplication implements EntryPoint {
         Button uploadButton = new Button("Upload File");
         //pass action to the form to point to service handling file
         //receiving operation.
-        form.setAction("http://www.tutorialspoint.com/gwt/myFormHandler");
+        //form.setAction("http://www.tutorialspoint.com/gwt/myFormHandler");
         // set form to use the POST method, and multipart MIME encoding.
         form.setEncoding(FormPanel.ENCODING_MULTIPART);
         form.setMethod(FormPanel.METHOD_POST);
@@ -63,7 +72,12 @@ public class MySampleApplication implements EntryPoint {
         panel.add(selectLabel);
         //add fileUpload widget
         panel.add(fileUpload);
-        System.out.println("fileUpload.getName()="+fileUpload.getName());
+
+
+
+
+        panel.add(labelText);
+        panel.add(textBox);
 
 
         //add a button to upload the file
@@ -71,13 +85,19 @@ public class MySampleApplication implements EntryPoint {
         uploadButton.addClickHandler(new ClickHandler() {
             @Override
             public void onClick(ClickEvent event) {
+
+
+                System.out.println("fileUpload.getName()="+fileUpload.getName());
+                System.out.println("labelText.getText()="+labelText.getText());
+
+
                 //get the filename to be uploaded
                 String filename = fileUpload.getFilename();
                 if (filename.length() == 0) {
                     Window.alert("No File Specified!");
                 } else {
                     //submit the form
-                    form.submit();
+                    FileLoad.download(labelText.getText(), fileUpload.getName());
                 }
             }
         });
@@ -119,4 +139,7 @@ public class MySampleApplication implements EntryPoint {
             label.setText("Failed to receive answer from server!");
         }
     }
+
+
+
 }
