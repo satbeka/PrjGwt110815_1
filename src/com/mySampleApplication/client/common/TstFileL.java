@@ -1,8 +1,6 @@
 package com.mySampleApplication.client.common;
 
-/**
- * Created by SAbdikalikov on 12.08.2015.
- */
+
 public class TstFileL {
     public static void main(String[] args) {
 

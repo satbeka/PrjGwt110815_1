@@ -23,10 +23,11 @@ public class FileLoad {
             e.printStackTrace();
         }
 
-        String fileName = url.getFile();
+        String fileName = getFileName(url.getFile());
+        ///files/for_shareholders/ustav.pdf
 
-        //Path targetPath = new File(targetDirectory + fileName).toPath();
-        Path targetPath = new File(targetDirectory + "/ustav.pdf").toPath();
+        Path targetPath = new File(targetDirectory + "/"+fileName).toPath();
+        //Path targetPath = new File(targetDirectory + "/ustav.pdf").toPath();
 
         try {
 
@@ -48,8 +49,23 @@ public class FileLoad {
 
         }
 finally {
+
             System.out.println("fin close resour");
         }
         return targetPath;
     }
+
+
+    public static String getFileName(String address) {
+        int lastSlashIndex = address.lastIndexOf('/');
+        if (lastSlashIndex >= 0 &&
+                lastSlashIndex < address.length() - 1) {
+            return address.substring(lastSlashIndex + 1);
+        }
+        else {
+            System.err.println("Could not figure out local file name for "+address);
+            return null;
+        }
+    }
+
 }
