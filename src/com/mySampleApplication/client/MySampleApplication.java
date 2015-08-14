@@ -7,6 +7,7 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.mySampleApplication.client.common.FileLoad;
+import com.mySampleApplication.server.DownloadFileServlet;
 
 /**
  * Entry point classes define <code>onModuleLoad()</code>
@@ -57,7 +58,7 @@ public class MySampleApplication implements EntryPoint {
         final FormPanel form = new FormPanel();
         //create a file upload widget
         final FileUpload fileUpload = new FileUpload();
-        //create labels
+//        final FileLoad fileLoad=new FileLoad();        //create labels
         Label selectLabel = new Label("Select a file:");
         //create upload button
         Button uploadButton = new Button("Upload File");
@@ -72,6 +73,16 @@ public class MySampleApplication implements EntryPoint {
         panel.add(selectLabel);
         //add fileUpload widget
         panel.add(fileUpload);
+
+
+        /*
+        final fileLoad2=new FileLoad();        //create labels
+        Label selectLabel2 = new Label("Select a dir:");
+        //add a label
+        panel.add(selectLabel2);
+        //add fileUpload widget
+        panel.add(fileLoad2);
+        */
 
 
 
@@ -90,7 +101,7 @@ public class MySampleApplication implements EntryPoint {
                 System.out.println("fileUpload.getName()="+fileUpload.getName());
                 System.out.println("labelText.getText()="+labelText.getText());
 
-
+/*
                 //get the filename to be uploaded
                 String filename = fileUpload.getFilename();
                 if (filename.length() == 0) {
@@ -99,6 +110,10 @@ public class MySampleApplication implements EntryPoint {
                     //submit the form
                     FileLoad.download(labelText.getText(), fileUpload.getName());
                 }
+                */
+
+
+
             }
         });
 

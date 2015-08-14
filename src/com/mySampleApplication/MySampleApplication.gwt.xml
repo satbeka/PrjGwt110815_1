@@ -14,5 +14,7 @@
 
     <!-- Specify the app servlets.                   -->
     <servlet path='/MySampleApplicationService' class='com.mySampleApplication.server.MySampleApplicationServiceImpl'/>
+    <servlet path='/DownloadFileServlet' class='com.mySampleApplication.server.DownloadFileServlet'/>
+
 
 </module>
