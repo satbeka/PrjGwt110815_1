@@ -13,4 +13,16 @@
         <servlet-name>com.mySampleApplication.MySampleApplication MySampleApplicationService</servlet-name>
         <url-pattern>/MySampleApplication/MySampleApplicationService</url-pattern>
     </servlet-mapping>
+
+
+    <servlet>
+        <servlet-name>downloadService</servlet-name>
+        <servlet-class>com.mySampleApplication.server.DownloadFileServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>downloadService</servlet-name>
+        <url-pattern>/MySampleApplication/downloadService</url-pattern>
+    </servlet-mapping>
+
 </web-app>

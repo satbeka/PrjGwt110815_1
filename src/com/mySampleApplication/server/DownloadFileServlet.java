@@ -2,7 +2,10 @@ package com.mySampleApplication.server;
 
 
 
+import com.mySampleApplication.client.common.FileLoad;
+
 import javax.servlet.ServletException;
+import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -16,7 +19,27 @@ public class DownloadFileServlet extends HttpServlet {
     static final private String CONTENT_TYPE_CHARSET = "charset=windows-1251";
     public static Hashtable<String, FileItemMy> sendFiles = new Hashtable<String, FileItemMy>();
 
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+    protected void doGet( HttpServletRequest req, HttpServletResponse resp ) throws ServletException, IOException
+    {
+        String fileName = req.getParameter( "fileInfo1" );
+
+        int BUFFER = 1024 * 100;
+        //resp.setContentType("application/octet-stream");
+        resp.setContentType("pdf"+ "; " + CONTENT_TYPE_CHARSET);
+
+        //resp.setHeader( "Content-Disposition:", "attachment;filename=" + "\"" + fileName + "\"" );
+        resp.setHeader( "Content-Disposition:", "attachment;filename=ustav.pdf" );
+        ServletOutputStream outputStream = resp.getOutputStream();
+        resp.setContentLength( Long.valueOf( FileLoad.getFileName(fileName).length() ).intValue() );
+        resp.setBufferSize( BUFFER );
+        //Your IO code goes here to create a file and set to outputStream//
+
+    }
+
+
+
+    protected void doGet22(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         //resp.setContentType("text/csv"); // Tell browser what content type the response body represents, so that it can associate it with e.g. MS Excel, if necessary.
         //resp.setHeader("Content-Disposition", "attachment; filename=name.csv"); // Force "Save As" dialogue.

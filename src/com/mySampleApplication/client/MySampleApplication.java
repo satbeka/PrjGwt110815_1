@@ -1,6 +1,7 @@
 package com.mySampleApplication.client;
 
 import com.google.gwt.core.client.EntryPoint;
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.*;
 import com.google.gwt.user.client.rpc.AsyncCallback;
@@ -43,7 +44,7 @@ public class MySampleApplication implements EntryPoint {
         String url_test="http://www.kase.kz/files/for_shareholders/ustav.pdf";
 
         final Label labelText = new Label("Load from Url: ");
-        TextBox textBox = new TextBox();
+        final TextBox textBox = new TextBox();
         textBox.setText(url_test);
         textBox.setVisibleLength(100);
         textBox.setTitle("Load from Url: ");
@@ -98,8 +99,13 @@ public class MySampleApplication implements EntryPoint {
             public void onClick(ClickEvent event) {
 
 
-                System.out.println("fileUpload.getName()="+fileUpload.getName());
-                System.out.println("labelText.getText()="+labelText.getText());
+                System.out.println("fileUpload.getName()=" + fileUpload.getName());
+                System.out.println("textBox.getText()=" + textBox.getText());
+
+
+                String url = GWT.getModuleBaseURL() + "downloadService?fileInfo1=" + textBox.getText();
+                Window.open(url, "_blank", "status=0,toolbar=0,menubar=0,location=0");
+
 
 /*
                 //get the filename to be uploaded
@@ -112,6 +118,21 @@ public class MySampleApplication implements EntryPoint {
                 }
                 */
 
+
+
+                /*
+                String sFieldName = labelText.getText();
+                String sContentType = cl.getString(4);
+
+                Log.wInfo("Создан временный файл " + file.getName() + " размер =" + file.getTotalSpace());
+                String sGUID = ServerHelp.getGUID();
+
+                FileItemMy itemMy = new FileItemMy(sContentType, sFieldName);
+                itemMy.setFileNameTemp(file.getAbsolutePath());
+
+                DownloadServlet.sendFiles.put(sGUID, itemMy);
+                Log.wInfo("Файл привязан к GUID=" + sGUID + ", файл =" + file.getName() + ", sendFiles.size=" + DownloadServlet.sendFiles.size());
+                */
 
 
             }
@@ -132,9 +153,6 @@ public class MySampleApplication implements EntryPoint {
         form.add(panel);
 
         RootPanel.get("gwtContainer").add(form);
-
-
-
 
 
     }
