@@ -1,9 +1,10 @@
 package com.mySampleApplication.server.swing;
 
+
 /**
  * Created by SAbdikalikov on 30.08.2015.
  */
-public class FileChooseRunner {
+public class FileChooseRunner{
 
     public String getFileName() {
         return fileName;
