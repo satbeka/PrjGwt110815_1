@@ -1,4 +1,4 @@
-package com.mySampleApplication.client.common;
+package com.mySampleApplication.server.common;
 
 
 public class TstFileL {
@@ -6,7 +6,8 @@ public class TstFileL {
 
 
         String url_test="http://www.kase.kz/files/for_shareholders/ustav.pdf";
-        String save_path="C:\\idea prj\\888";
-        FileLoad.download(url_test, save_path);
+        //String save_path="C:\\idea prj\\888";
+
+        FileLoad.download(url_test);
     }
 }

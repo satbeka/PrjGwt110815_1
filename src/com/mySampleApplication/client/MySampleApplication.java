@@ -7,8 +7,7 @@ import com.google.gwt.user.client.ui.*;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.dom.client.ClickEvent;
-import com.mySampleApplication.client.common.FileLoad;
-import com.mySampleApplication.server.DownloadFileServlet;
+import com.mySampleApplication.server.common.FileLoad;
 
 /**
  * Entry point classes define <code>onModuleLoad()</code>
@@ -103,8 +102,10 @@ public class MySampleApplication implements EntryPoint {
                 System.out.println("textBox.getText()=" + textBox.getText());
 
 
-                String url = GWT.getModuleBaseURL() + "downloadService?fileInfo1=" + textBox.getText();
-                Window.open(url, "_blank", "status=0,toolbar=0,menubar=0,location=0");
+                //String url = GWT.getModuleBaseURL() + "downloadService?fileInfo1=" + textBox.getText();
+                String url = GWT.getModuleBaseURL() + "downloadService?fileURL=" + textBox.getText();
+
+                //Window.open(url, "_blank", "status=0,toolbar=0,menubar=0,location=0");
 
 
 /*
@@ -124,14 +125,14 @@ public class MySampleApplication implements EntryPoint {
                 String sFieldName = labelText.getText();
                 String sContentType = cl.getString(4);
 
-                Log.wInfo("Создан временный файл " + file.getName() + " размер =" + file.getTotalSpace());
+                Log.wInfo("пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ " + file.getName() + " пїЅпїЅпїЅпїЅпїЅпїЅ =" + file.getTotalSpace());
                 String sGUID = ServerHelp.getGUID();
 
                 FileItemMy itemMy = new FileItemMy(sContentType, sFieldName);
                 itemMy.setFileNameTemp(file.getAbsolutePath());
 
                 DownloadServlet.sendFiles.put(sGUID, itemMy);
-                Log.wInfo("Файл привязан к GUID=" + sGUID + ", файл =" + file.getName() + ", sendFiles.size=" + DownloadServlet.sendFiles.size());
+                Log.wInfo("пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ GUID=" + sGUID + ", пїЅпїЅпїЅпїЅ =" + file.getName() + ", sendFiles.size=" + DownloadServlet.sendFiles.size());
                 */
 
 
@@ -169,7 +170,7 @@ public class MySampleApplication implements EntryPoint {
         }
 
         public void onFailure(Throwable throwable) {
-            label.setText("Failed to receive answer from server!");
+            label.setText("Failed to receive answer from com.mySampleApplication.server!");
         }
     }
 

@@ -2,7 +2,7 @@ package com.mySampleApplication.server;
 
 
 
-import com.mySampleApplication.client.common.FileLoad;
+import com.mySampleApplication.server.common.FileLoad;
 
 import javax.servlet.ServletException;
 import javax.servlet.ServletOutputStream;
@@ -22,8 +22,13 @@ public class DownloadFileServlet extends HttpServlet {
 
     protected void doGet( HttpServletRequest req, HttpServletResponse resp ) throws ServletException, IOException
     {
-        String fileName = req.getParameter( "fileInfo1" );
+        //String fileName = req.getParameter( "fileInfo1" );
+        String url = req.getParameter( "fileURL" );
+        System.out.println("url="+url);
 
+        FileLoad.download(url);
+
+        /*
         int BUFFER = 1024 * 100;
         //resp.setContentType("application/octet-stream");
         resp.setContentType("pdf"+ "; " + CONTENT_TYPE_CHARSET);
@@ -34,6 +39,7 @@ public class DownloadFileServlet extends HttpServlet {
         resp.setContentLength( Long.valueOf( FileLoad.getFileName(fileName).length() ).intValue() );
         resp.setBufferSize( BUFFER );
         //Your IO code goes here to create a file and set to outputStream//
+        */
 
     }
 

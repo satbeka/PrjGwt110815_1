@@ -1,4 +1,6 @@
-package com.mySampleApplication.client.common;
+package com.mySampleApplication.server.common;
+
+import com.mySampleApplication.server.swing.FileChooseRunner;
 
 import java.io.File;
 import java.io.IOException;
@@ -13,8 +15,7 @@ import java.nio.file.StandardCopyOption;
  */
 public class FileLoad {
 
-    public static Path download(String sourceUrl,
-                                String targetDirectory)
+    public static Path download(String sourceUrl)
     {
         URL url = null;
         try {
@@ -23,11 +24,17 @@ public class FileLoad {
             e.printStackTrace();
         }
 
+
         String fileName = getFileName(url.getFile());
         ///files/for_shareholders/ustav.pdf
+        FileChooseRunner fileChooseRunner=new FileChooseRunner();
+        fileChooseRunner.setFileName(fileName);
+        fileChooseRunner.start();
+        String targetDirectory=fileChooseRunner.getSavePath();
 
-        Path targetPath = new File(targetDirectory + "/"+fileName).toPath();
+        //Path targetPath = new File(targetDirectory + "/"+fileName).toPath();
         //Path targetPath = new File(targetDirectory + "/ustav.pdf").toPath();
+        Path targetPath = new File(targetDirectory).toPath();
 
         try {
 
