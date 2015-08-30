@@ -103,9 +103,9 @@ public class MySampleApplication implements EntryPoint {
 
 
                 //String url = GWT.getModuleBaseURL() + "downloadService?fileInfo1=" + textBox.getText();
-                String url = GWT.getModuleBaseURL() + "downloadService?fileURL=" + textBox.getText();
+                String url = GWT.getModuleBaseURL() + "downloadFile?fileURL=" + textBox.getText();
 
-                //Window.open(url, "_blank", "status=0,toolbar=0,menubar=0,location=0");
+                Window.open(url, "_blank", "status=0,toolbar=0,menubar=0,location=0");
 
 
 /*

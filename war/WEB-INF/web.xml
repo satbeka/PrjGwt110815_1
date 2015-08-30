@@ -17,12 +17,12 @@
 
 
     <servlet>
-        <servlet-name>downloadService</servlet-name>
+        <servlet-name>DownloadFileServlet</servlet-name>
         <servlet-class>com.mySampleApplication.server.DownloadFileServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>downloadService</servlet-name>
-        <url-pattern>/MySampleApplication/DownloadFileServlet</url-pattern>
+        <servlet-name>DownloadFileServlet</servlet-name>
+        <url-pattern>/MySampleApplication/downloadFile</url-pattern>
     </servlet-mapping>
 
 </web-app>
