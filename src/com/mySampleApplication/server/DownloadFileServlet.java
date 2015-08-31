@@ -26,7 +26,7 @@ public class DownloadFileServlet extends HttpServlet {
         String url = req.getParameter( "fileURL" );
         System.out.println("url="+url);
 
-        FileLoad.download(url);
+        //FileLoad.download(url);
 
         /*
         int BUFFER = 1024 * 100;

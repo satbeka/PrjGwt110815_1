@@ -1,5 +1,8 @@
 package com.mySampleApplication.server.swing;
 
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.File;
 
 import javax.swing.JButton;
@@ -20,7 +23,9 @@ public class FileChooseDialog extends JFrame{
         this.urlFileName = urlFileName;
     }
 
-    private String urlFileName;
+    private String urlFileName="ustav.pdf";
+
+    private String url="http://www.kase.kz/files/for_shareholders/ustav.pdf";
 
     public String getSavePath() {
         return savePath;
@@ -34,15 +39,15 @@ public class FileChooseDialog extends JFrame{
 
         private JButton buttonBrowse;
 
-        public FileChooseDialog(String urlFileName) {
-            super("Save FileChooseDialog");
+        public FileChooseDialog(String urlFileName,String url) {
+            super();
             this.urlFileName = urlFileName;
+            this.url=url;
+            System.out.println("urlFileName="+urlFileName);
+            //showSaveFileDialog();
 
-            showSaveFileDialog();
-
-            /*
             setLayout(new FlowLayout());
-            buttonBrowse = new JButton("Save...");
+            buttonBrowse = new JButton("Save file from URL:"+this.url);
             buttonBrowse.addActionListener(new ActionListener() {
 
                 public void actionPerformed(ActionEvent arg0) {
@@ -50,11 +55,11 @@ public class FileChooseDialog extends JFrame{
                 }
             });
             getContentPane().add(buttonBrowse);
-            setSize(300, 100);
+            setSize(500, 200);
             setLocationRelativeTo(null);
             setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             setVisible(true);
-            */
+
 
         }
 
@@ -63,6 +68,7 @@ public class FileChooseDialog extends JFrame{
         private void showSaveFileDialog() {
 
 
+/*
             // parent component of the dialog
             JFrame parentFrame = new JFrame();
 
@@ -76,12 +82,12 @@ public class FileChooseDialog extends JFrame{
                 System.out.println("Save as file: " + fileToSave.getAbsolutePath());
                 this.savePath=fileToSave.getAbsolutePath();
             }
+*/
 
 
-            /*
             JFileChooser fileChooser = new JFileChooser();
             fileChooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
-            fileChooser.showSaveDialog(null);
+            //fileChooser.showSaveDialog(null);
 
             fileChooser.setSelectedFile(new File(urlFileName));
             //FileChooserUI fcUi = fileChooser.getUI();
@@ -95,7 +101,7 @@ public class FileChooseDialog extends JFrame{
                 System.out.println("Save as file: " + fileToSave.getAbsolutePath());
                 this.savePath=fileToSave.getAbsolutePath();
             }
-            */
+
 
         }
 

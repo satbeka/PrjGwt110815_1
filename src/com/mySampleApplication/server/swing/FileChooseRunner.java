@@ -22,12 +22,21 @@ public class FileChooseRunner{
         this.savePath = savePath;
     }
 
+    public String getFileURL() {
+        return fileURL;
+    }
+
+    public void setFileURL(String fileURL) {
+        this.fileURL = fileURL;
+    }
+
     private String fileName;
     private String savePath;
+    private String fileURL;
 
-    public void start() {
+    public void run() {
 
-        FileChooseDialog fileChooseDialog=new FileChooseDialog(fileName);
+        FileChooseDialog fileChooseDialog=new FileChooseDialog(fileName,fileURL);
 
         savePath=fileChooseDialog.getSavePath();
 

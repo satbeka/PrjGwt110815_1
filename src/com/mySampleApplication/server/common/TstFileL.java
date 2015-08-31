@@ -8,6 +8,6 @@ public class TstFileL {
         String url_test="http://www.kase.kz/files/for_shareholders/ustav.pdf";
         //String save_path="C:\\idea prj\\888";
 
-        FileLoad.download(url_test);
+        //FileLoad.download(url_test);
     }
 }
