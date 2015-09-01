@@ -14,7 +14,7 @@ public class TstFileChs {
         SwingUtilities.invokeLater(new Runnable() {
 
             public void run() {
-                new FileChooseDialog("ustav.pdf");
+                //new FileChooseDialog("ustav.pdf");
             }
         });
     }
