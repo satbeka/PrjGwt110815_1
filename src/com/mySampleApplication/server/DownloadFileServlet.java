@@ -16,7 +16,7 @@ import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import java.util.Hashtable;
-
+import static gwtupload.server.UploadServlet.copyFromInputStreamToOutputStream;
 
 public class DownloadFileServlet extends HttpServlet {
     private static final long serialVersionUID = 1000L;
@@ -50,13 +50,40 @@ public class DownloadFileServlet extends HttpServlet {
         //Your IO code goes here to create a file and set to outputStream//
 
 
+        try {
+            InputStream in = urlTemp.openStream();
+            copyFromInputStreamToOutputStream(in, out);
+            in.close();
+            out.flush();
+            out.close();
+        }
+        catch (Exception e){
+            try {
+
+                System.setProperty("http.proxyHost", "172.22.223.247");
+                System.setProperty("http.proxyPort", "8080");
+
+                InputStream in = urlTemp.openStream();
+                copyFromInputStreamToOutputStream(in, out);
+                in.close();
+                out.flush();
+                out.close();
+
+
+            }
+            catch (Exception e2){
+
+            }
+        }
+
+        /*
         try
         {
             //Get it from file system
-            /*
+
             FileInputStream in =
                     new FileInputStream(new File("C:\\superfish.zip"));
-            */
+
 
             //Get it from web path
             //jndi:/localhost/StrutsExample/upload/superfish.zip
@@ -87,12 +114,21 @@ public class DownloadFileServlet extends HttpServlet {
             out.flush();
             out.close();
             try {
+                String url_test="http://www.kase.kz/files/for_shareholders/ustav.pdf";
                 System.setProperty("http.proxyHost", "172.22.223.247");
                 System.setProperty("http.proxyPort", "8080");
                 //InputStream in = urlTemp.openStream();
-                InputStream in = urlTemp.openStream();
+                //InputStream in = urlTemp.openStream();
+                FileInputStream fileInputStream=new FileInputStream("http://www.kase.kz//files//for_shareholders//ustav.pdf");
+                int i;
+                while ((i=fileInputStream.read()) != -1) {
+                    out.write(i);
+                }
+                fileInputStream.close();
+                out.flush();
+                out.close();
 
-                //int read=0;
+                            //int read=0;
                 byte[] outputByte = new byte[4096];
                 //copy binary content to output stream
                 //while(in.read(outputByte, 0, 1024) != -1){
@@ -100,6 +136,7 @@ public class DownloadFileServlet extends HttpServlet {
                     out.write(outputByte, 0, 4096);
                 }
                 in.close();
+
                 out.flush();
                 out.close();
 
@@ -111,6 +148,7 @@ public class DownloadFileServlet extends HttpServlet {
 
 
         }
+        */  //020915
 
 
 
