@@ -42,24 +42,24 @@ public class MySampleApplication implements EntryPoint {
 
         String url_test="http://www.kase.kz/files/for_shareholders/ustav.pdf";
 
-        final Label labelText = new Label("Load from Url: ");
+        final Label labelText = new Label("1 111Load from Url: ");
         final TextBox textBox = new TextBox();
         textBox.setText(url_test);
         textBox.setVisibleLength(100);
         textBox.setTitle("Load from Url: ");
 
         //set style name for entire widget
-        labelText.addStyleName("gwt-Label");
+        labelText.addStyleName("gwt-Blue-Border");
+        //labelText.asWidget();
 
 
         VerticalPanel panel = new VerticalPanel();
-
         //create a FormPanel
         final FormPanel form = new FormPanel();
-        //create a file upload widget
-        final FileUpload fileUpload = new FileUpload();
-//        final FileLoad fileLoad=new FileLoad();        //create labels
-        Label selectLabel = new Label("Select a file:");
+
+        panel.add(labelText);
+        panel.add(textBox);
+
         //create upload button
         Button uploadButton = new Button("Upload File toDownload thru Servlet");
         //pass action to the form to point to service handling file
@@ -69,10 +69,6 @@ public class MySampleApplication implements EntryPoint {
         form.setEncoding(FormPanel.ENCODING_MULTIPART);
         form.setMethod(FormPanel.METHOD_POST);
 
-        //add a label
-        panel.add(selectLabel);
-        //add fileUpload widget
-        panel.add(fileUpload);
 
 
         /*
@@ -87,8 +83,7 @@ public class MySampleApplication implements EntryPoint {
 
 
 
-        panel.add(labelText);
-        panel.add(textBox);
+
 
 
         //add a button to upload the file
@@ -98,9 +93,7 @@ public class MySampleApplication implements EntryPoint {
             public void onClick(ClickEvent event) {
 
 
-                System.out.println("fileUpload.getName()=" + fileUpload.getName());
                 System.out.println("textBox.getText()=" + textBox.getText());
-
 
                 //String url = GWT.getModuleBaseURL() + "downloadService?fileInfo1=" + textBox.getText();
                 String url = GWT.getModuleBaseURL() + "downloadFile?fileURL=" + textBox.getText();
@@ -154,6 +147,38 @@ public class MySampleApplication implements EntryPoint {
         form.add(panel);
 
         RootPanel.get("gwtContainer").add(form);
+
+
+        Label lblName=new Label("lblblbl");
+        final TextBox txtName=new TextBox();
+        HorizontalPanel hPanel = new HorizontalPanel();
+        hPanel.setTitle("Hpanel555");
+        hPanel.add(lblName);
+        hPanel.add(txtName);
+        hPanel.setCellWidth(lblName, "130");
+
+        VerticalPanel vPanel = new VerticalPanel();
+        vPanel.setSpacing(10);
+        vPanel.add(hPanel);
+
+        Button buttonMessage = new Button("ButtnMesag Click Me!");
+        buttonMessage.addClickHandler(new ClickHandler() {
+            @Override
+            public void onClick(ClickEvent event) {
+                Window.alert(txtName.getValue());
+                txtName.setVisible(false);
+            }
+        });
+        vPanel.add(buttonMessage);
+        vPanel.setCellHorizontalAlignment(buttonMessage,
+                HasHorizontalAlignment.ALIGN_RIGHT);
+
+        DecoratorPanel panel55 = new DecoratorPanel();
+        panel55.add(vPanel);
+
+        RootPanel.get("gwtContainer").add(panel55);
+
+
 
 
     }
