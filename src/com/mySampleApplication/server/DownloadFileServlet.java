@@ -10,6 +10,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
+import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import java.util.Hashtable;
 
@@ -25,21 +29,93 @@ public class DownloadFileServlet extends HttpServlet {
         //String fileName = req.getParameter( "fileInfo1" );
         String url = req.getParameter( "fileURL" );
         System.out.println("url="+url);
-
+        URL urlTemp=new URL(url);
+        String fileName=FileLoad.getFileName(url);
+        System.out.println("fileName="+fileName);
         //FileLoad.download(url);
 
-        /*
-        int BUFFER = 1024 * 100;
+        //int BUFFER = 1024 * 100;
         //resp.setContentType("application/octet-stream");
-        resp.setContentType("pdf"+ "; " + CONTENT_TYPE_CHARSET);
+        //resp.setContentType("pdf"+ "; " + CONTENT_TYPE_CHARSET);
+        resp.setContentType("application/octet-stream");
 
-        //resp.setHeader( "Content-Disposition:", "attachment;filename=" + "\"" + fileName + "\"" );
-        resp.setHeader( "Content-Disposition:", "attachment;filename=ustav.pdf" );
-        ServletOutputStream outputStream = resp.getOutputStream();
-        resp.setContentLength( Long.valueOf( FileLoad.getFileName(fileName).length() ).intValue() );
-        resp.setBufferSize( BUFFER );
+
+        resp.setHeader("Content-Disposition:", "attachment;filename=" + fileName);
+        //resp.setHeader( "Content-Disposition:", "attachment;filename=ustav.pdf" );
+        OutputStream out = resp.getOutputStream();
+        //resp.setContentLength( Long.valueOf( FileLoad.getFileName(fileName).length() ).intValue() );
+        //resp.setContentLength(Long.valueOf( urlTemp.getFile().length() ).intValue());
+
+        //resp.setBufferSize(BUFFER);
         //Your IO code goes here to create a file and set to outputStream//
-        */
+
+
+        try
+        {
+            //Get it from file system
+            /*
+            FileInputStream in =
+                    new FileInputStream(new File("C:\\superfish.zip"));
+            */
+
+            //Get it from web path
+            //jndi:/localhost/StrutsExample/upload/superfish.zip
+            //URL url = getServlet().getServletContext()
+            //               .getResource("upload/superfish.zip");
+
+
+            //Get it from bytes array
+            //byte[] bytes = new byte[4096];
+            //InputStream in = new ByteArrayInputStream(bytes);
+            InputStream in = urlTemp.openStream();
+
+            //int read=0;
+            byte[] outputByte = new byte[4096];
+            //copy binary content to output stream
+            //while(in.read(outputByte, 0, 1024) != -1){
+            while(in.read(outputByte, 0, 4096) != -1) {
+                out.write(outputByte, 0, 4096);
+            }
+            in.close();
+            out.flush();
+            out.close();
+
+        }catch(Exception e){
+            e.printStackTrace();
+
+
+            out.flush();
+            out.close();
+            try {
+                System.setProperty("http.proxyHost", "172.22.223.247");
+                System.setProperty("http.proxyPort", "8080");
+                //InputStream in = urlTemp.openStream();
+                InputStream in = urlTemp.openStream();
+
+                //int read=0;
+                byte[] outputByte = new byte[4096];
+                //copy binary content to output stream
+                //while(in.read(outputByte, 0, 1024) != -1){
+                while(in.read(outputByte, 0, 4096) != -1) {
+                    out.write(outputByte, 0, 4096);
+                }
+                in.close();
+                out.flush();
+                out.close();
+
+
+            } catch (Exception e2){
+                e2.getMessage();
+            }
+
+
+
+        }
+
+
+
+
+
 
     }
 
@@ -68,7 +144,7 @@ public class DownloadFileServlet extends HttpServlet {
 
                 String fileName = fileItemMy.getFileName();
 
-                //todo разобраться почему файлы приходят не на русском языке
+
                 //      fileName = new String(fileName.getBytes("windows-1251"), Charset.forName("windows-1251"));
 
                 String fileNameTemp = fileItemMy.getFileNameTemp();

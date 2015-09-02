@@ -61,7 +61,7 @@ public class MySampleApplication implements EntryPoint {
 //        final FileLoad fileLoad=new FileLoad();        //create labels
         Label selectLabel = new Label("Select a file:");
         //create upload button
-        Button uploadButton = new Button("Upload File");
+        Button uploadButton = new Button("Upload File toDownload thru Servlet");
         //pass action to the form to point to service handling file
         //receiving operation.
         //form.setAction("http://www.tutorialspoint.com/gwt/myFormHandler");

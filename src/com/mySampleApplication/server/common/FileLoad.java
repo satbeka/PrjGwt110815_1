@@ -14,7 +14,7 @@ import java.nio.file.StandardCopyOption;
 /**
  * Created by SAbdikalikov on 12.08.2015.
  */
-public class FileLoad extends JApplet{
+public class FileLoad {
 
 
     String sourceUrl="http://www.kase.kz/files/for_shareholders/ustav.pdf";
@@ -73,7 +73,6 @@ public class FileLoad extends JApplet{
     }
 
 
-    /*
     public static Path download(String sourceUrl)
     {
         URL url = null;
@@ -121,7 +120,6 @@ finally {
         }
         return targetPath;
     }
-    */
 
 
 
