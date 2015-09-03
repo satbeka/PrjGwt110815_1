@@ -28,3 +28,13 @@ font-family: Verdana;
 .gwt-Blue-Border{
     border:1px solid blue;
 }
+
+.lblFirst{
+    position: relative;
+    top: 10px;
+    left: 200px;
+    font-family: Verdana;
+    font-size: 140%;
+    font-weight: bold;
+    color:green;
+}

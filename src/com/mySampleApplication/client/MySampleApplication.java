@@ -46,7 +46,7 @@ public class MySampleApplication implements EntryPoint {
 
         String url_test="http://www.kase.kz/files/for_shareholders/ustav.pdf";
 
-        final Label labelText = new Label("1 111Load from Url: ");
+        final Label labelText = new Label("Load from Url: ");
         final TextBox textBox = new TextBox();
         textBox.setText(url_test);
         textBox.setVisibleLength(100);
@@ -61,7 +61,9 @@ public class MySampleApplication implements EntryPoint {
         //create a FormPanel
         final FormPanel form = new FormPanel();
 
+        labelText.setStyleName("lblFirst");
         panel.add(labelText);
+
         panel.add(textBox);
 
         //create upload button
