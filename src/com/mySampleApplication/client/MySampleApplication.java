@@ -2,12 +2,16 @@ package com.mySampleApplication.client;
 
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.dom.client.Style;
+import com.google.gwt.i18n.server.Message;
+import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.*;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.mySampleApplication.server.common.FileLoad;
+
 
 /**
  * Entry point classes define <code>onModuleLoad()</code>
@@ -178,8 +182,61 @@ public class MySampleApplication implements EntryPoint {
 
         RootPanel.get("gwtContainer").add(panel55);
 
+        BrickPage(RootPanel.get("gwtContainer"));
+
+        Timer t = new Timer() {
+            @Override
+            public void run() {
+                Window.alert(" Hello where How ?");
+            }
+        };
+
+        // Schedule the timer to run once in 5 seconds. 5000
+        t.schedule(5000);
+        t.run();
 
 
+
+
+    }
+
+
+    public void BrickPage(RootPanel rootPanel){
+        rootPanel.setSize("1600", "900");
+        rootPanel.getElement().getStyle().setPosition(Style.Position.RELATIVE);
+        final AbsolutePanel absolutePanel=new AbsolutePanel();
+        absolutePanel.setTitle("click me");
+
+        absolutePanel.setSize("2344px", "2605px");
+        Label labelOnPanel=new Label("ClickToMove RRR");
+        absolutePanel.add(labelOnPanel,5,5);
+
+
+        final Label labelYourBrick = new Label("rrr 427,10");
+        absolutePanel.add(labelYourBrick,427,10);
+        labelYourBrick.setSize("66px", "108px");
+
+        Label labelDonatedFor=new Label("ttt 372, 58");
+        absolutePanel.add(labelDonatedFor, 372, 58);
+
+        Button buttonHomePage = new Button();
+        buttonHomePage.setSize("115px", "55px");
+        buttonHomePage.addClickHandler(new ClickHandler() {
+                                           public void onClick(ClickEvent event) {
+
+                                               int l=absolutePanel.getWidgetLeft(labelYourBrick)+50;
+                                               int t=absolutePanel.getWidgetTop(labelYourBrick)+50;
+                                               Window.alert("Hello BrickPage left="+l+" top="+t);
+
+                                               absolutePanel.setWidgetPosition(labelYourBrick,l,t);
+
+                                           }
+                                       }
+        );
+
+        absolutePanel.add(buttonHomePage);
+
+        rootPanel.add(absolutePanel);
 
     }
 
