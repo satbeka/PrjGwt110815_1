@@ -40,8 +40,6 @@ public class MySampleApplication implements EntryPoint {
         // to hard-code IDs.  Instead, you could, for example, search for all
         // elements with a particular CSS class and replace them with widgets.
         //
-        RootPanel.get("slot1").add(button);
-        RootPanel.get("slot2").add(label);
 
 
         String url_test="http://www.kase.kz/files/for_shareholders/ustav.pdf";

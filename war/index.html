@@ -1,18 +1,14 @@
 <html>
 <head>
 
-    <!--                                           -->
-    <!-- Any title is fine                         -->
-    <!--                                           -->
-    <title>HTML for App GWT</title>
 
-    <link type="text/css" rel="stylesheet" href="MySampleApplication.css">
+    <link rel="shortcut icon" type="image/ico" href="/favicon_ercb.ico"/>
+    <title>AO Share Paper</title>
+    <link type="text/css" rel="stylesheet" href="index.css">
+    <link rel="stylesheet" type="text/css" href="resource/css/reset.css"/>
+    <link rel="stylesheet" type="text/css" href="resource/css/resources.css"/>
 
-    <!--                                            -->
-    <!-- This script is required bootstrap stuff.   -->
-    <!--                                            -->
-    <script type="text/javascript" language="javascript"
-            src="MySampleApplication/MySampleApplication.nocache.js"></script>
+
 </head>
 
 <!--                                           -->
@@ -22,27 +18,26 @@
 <!--                                           -->
 <body>
 
-<h1>Sample Application</h1>
-
-<p>
-    This is an example of a host page for the App application.
-    You can attach a Web Toolkit module to any HTML page you like,
-    making it easy to add bits of AJAX functionality to existing pages
-    without starting from scratch.
-</p>
-
-<table align="center">
-    <tr>
-        <td id="slot1"></td>
-        <td id="slot2"></td>
-    </tr>
-</table>
 
 
-<h2>FileUpload Widget Demonstration</h2>
+<img src="res/logo_tisr.jpg"/>
+<br/>
+<img src="res/loadinfo_24.gif" width="24" height="24"
+     style="margin-right:8px;float:left;vertical-align:top; font-size: 16"/>АО «Единый регистратор ценных бумаг»<br/>
+<span id="loadingMsg">Loading 8888 app...</span>
+<span id="loadingMsgVersion">Version 1.01</span>
+
+
+<!--                                            -->
+<!-- This script is required bootstrap stuff.   -->
+<!--                                            -->
+<script type="text/javascript" language="javascript"
+        src="MySampleApplication/MySampleApplication.nocache.js"></script>
+
+
 <div id="gwtContainer"></div>
 
-<input type="file"/>
+<!--<input type="file"/>-->
 </body>
 
 </html>
