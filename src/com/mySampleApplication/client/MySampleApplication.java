@@ -12,6 +12,9 @@ import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.mySampleApplication.server.common.FileLoad;
 
+import java.util.Date;
+import java.util.HashMap;
+
 
 /**
  * Entry point classes define <code>onModuleLoad()</code>
@@ -21,7 +24,123 @@ public class MySampleApplication implements EntryPoint {
     /**
      * This is the entry point method.
      */
+
+    private static void loadApp(String sCode) {
+
+        BvButton bvButton = new BvButton();
+        bvButton.addSelectHandler(new SelectEvent.SelectHandler() {
+            @Override
+            public void onSelect(SelectEvent event) {
+                LogGwt.wError("fdfd");
+            }
+        });
+        bvButton.addShowContextMenuHandler(new ShowContextMenuEvent.ShowContextMenuHandler() {
+            @Override
+            public void onShowContextMenu(ShowContextMenuEvent event) {
+
+            }
+        });
+        MainService.App.getInstance().getSystemParam(sCode, new AsyncCallback<HashMap<String, String>>() {
+                    public void onFailure(Throwable caught) {
+                        LogGwt.wError(caught);
+                    }
+
+                    @Override
+                    public void onSuccess(HashMap<String, String> map) {
+                        String version = map.get("version");
+                        if (!version.equals(getVersion())) {
+                            String err = ((MyMessageInterface) GWT.create(MyMessageInterface.class)).неСоответствиеВерсийОбновитеСтраницуF5();
+                            LogGwt.wError(err);
+                            GxtHelp.InfoError(err);
+                            return;
+                        }
+
+                        zoneBase = Integer.parseInt(map.get("zoneBase")) / 60 / 1000 / 60;        //NON-NLS
+                        zoneClient = new Date().getTimezoneOffset() * -1 / 60;
+
+
+                        if (!zoneBase.equals(zoneClient)) {
+                            String err = ((MyMessageInterface) GWT.create(MyMessageInterface.class)).неСоответствиеВремени() +
+                                    ", на сервере(" + zoneBase + ") - на клиенте(" + zoneClient + ")";
+                            //LogGwt.wError(err);
+
+                            LogGwt.wInfo(err);
+
+                            //HtmlWindow window = new HtmlWindow(err);
+                            //window.show();
+                        }
+
+
+                        String s = map.get("error");    //NON-NLS
+                        if (s != null) {
+                            LogGwt.wError(map.get("error"));        //NON-NLS
+                        } else {
+                            systemParam = map;
+                            Viewport viewport = new Viewport();
+                            viewport.setBorders(false);
+                            viewport.setEnableScroll(true);
+                            appMainForm = new AppMainForm();
+                            viewport.add(appMainForm, new MarginData(0));
+                            RootPanel.get().add(viewport, 0, 0);
+                        }
+                    }
+                }
+        );
+    }
+
     public void onModuleLoad() {
+
+
+        String systemPar="";
+
+
+        Window.addWindowClosingHandler(new Window.ClosingHandler() {
+            @Override
+            public void onWindowClosing(Window.ClosingEvent event) {
+                event.setMessage("Действительно закрыть страницу?");
+                //GxtHelp.InfoInformation("Нельзя нажимать эту кнопку.");
+
+            }
+        });
+
+        String sCode = GWT.getHostPageBaseURL();
+        System.out.println("sCode="+sCode);
+
+        {
+            sCode = sCode.substring(sCode.lastIndexOf("/", sCode.length() - 2) + 1, sCode.length() - 1);
+        }
+
+        loadApp(sCode);
+
+
+
+
+
+        //--<060915
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         final Button button = new Button("Click me");
         final Label label = new Label();
 
