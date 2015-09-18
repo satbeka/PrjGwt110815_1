@@ -14,6 +14,7 @@ import com.mySampleApplication.server.common.FileLoad;
 
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Iterator;
 
 
 /**
@@ -27,92 +28,101 @@ public class MySampleApplication implements EntryPoint {
 
     private static void loadApp(String sCode) {
 
-        BvButton bvButton = new BvButton();
-        bvButton.addSelectHandler(new SelectEvent.SelectHandler() {
+//Create an empty tab panel
+        TabPanel tabPanel = new TabPanel();
+
+        /*
+        //create contents for tabs of tabpanel
+        Label label1 = new Label("This is contents of TAB 1");
+        label1.setHeight("200");
+        Label label2 = new Label("This is contents of TAB 2");
+        label2.setHeight("200");
+*/
+
+        Label label3 = new Label("This tab is temporary for test");
+        label3.setHeight("200");
+
+        //create panel
+        Panel panel1=new Panel() {
             @Override
-            public void onSelect(SelectEvent event) {
-                LogGwt.wError("fdfd");
+            public boolean remove(Widget child) {
+                return false;
             }
-        });
-        bvButton.addShowContextMenuHandler(new ShowContextMenuEvent.ShowContextMenuHandler() {
+
             @Override
-            public void onShowContextMenu(ShowContextMenuEvent event) {
-
+            public Iterator<Widget> iterator() {
+                return null;
             }
-        });
-        MainService.App.getInstance().getSystemParam(sCode, new AsyncCallback<HashMap<String, String>>() {
-                    public void onFailure(Throwable caught) {
-                        LogGwt.wError(caught);
-                    }
+        };
+        panel1.setTitle("Connect");
+        panel1.setHeight("10px");
+        panel1.setSize("100px","400px");
 
-                    @Override
-                    public void onSuccess(HashMap<String, String> map) {
-                        String version = map.get("version");
-                        if (!version.equals(getVersion())) {
-                            String err = ((MyMessageInterface) GWT.create(MyMessageInterface.class)).неСоответствиеВерсийОбновитеСтраницуF5();
-                            LogGwt.wError(err);
-                            GxtHelp.InfoError(err);
-                            return;
-                        }
+        Panel panel2=new Panel() {
+            @Override
+            public boolean remove(Widget child) {
+                return false;
+            }
 
-                        zoneBase = Integer.parseInt(map.get("zoneBase")) / 60 / 1000 / 60;        //NON-NLS
-                        zoneClient = new Date().getTimezoneOffset() * -1 / 60;
-
-
-                        if (!zoneBase.equals(zoneClient)) {
-                            String err = ((MyMessageInterface) GWT.create(MyMessageInterface.class)).неСоответствиеВремени() +
-                                    ", на сервере(" + zoneBase + ") - на клиенте(" + zoneClient + ")";
-                            //LogGwt.wError(err);
-
-                            LogGwt.wInfo(err);
-
-                            //HtmlWindow window = new HtmlWindow(err);
-                            //window.show();
-                        }
+            @Override
+            public Iterator<Widget> iterator() {
+                return null;
+            }
+        };
+        panel2.setTitle("Choose Language");
+        panel2.setHeight("20px");
+        panel2.setSize("100px","400px");
 
 
-                        String s = map.get("error");    //NON-NLS
-                        if (s != null) {
-                            LogGwt.wError(map.get("error"));        //NON-NLS
-                        } else {
-                            systemParam = map;
-                            Viewport viewport = new Viewport();
-                            viewport.setBorders(false);
-                            viewport.setEnableScroll(true);
-                            appMainForm = new AppMainForm();
-                            viewport.add(appMainForm, new MarginData(0));
-                            RootPanel.get().add(viewport, 0, 0);
-                        }
-                    }
-                }
-        );
+
+        //create titles for tabs
+        String tab1Title = "Main";
+        String tab2Title = "For test 2";
+        String tab3Title = "For test 3";
+
+        //create tabs
+        tabPanel.add(panel1, tab1Title);
+        tabPanel.add(panel2, tab1Title);
+        tabPanel.add(label3, tab3Title);
+
+        //select first tab
+        tabPanel.selectTab(0);
+
+        //set width if tabpanel
+        tabPanel.setWidth("400");
+
+        // Add the widgets to the root panel.
+        RootPanel.get("gwtContainer").add(tabPanel);
     }
 
     public void onModuleLoad() {
 
 
-        String systemPar="";
+        String systemPar = "";
 
 
         Window.addWindowClosingHandler(new Window.ClosingHandler() {
             @Override
             public void onWindowClosing(Window.ClosingEvent event) {
-                event.setMessage("Действительно закрыть страницу?");
+                event.setMessage("Close page?");
                 //GxtHelp.InfoInformation("Нельзя нажимать эту кнопку.");
 
             }
         });
 
         String sCode = GWT.getHostPageBaseURL();
-        System.out.println("sCode="+sCode);
+        System.out.println("sCode=" + sCode);
 
         {
             sCode = sCode.substring(sCode.lastIndexOf("/", sCode.length() - 2) + 1, sCode.length() - 1);
         }
 
         loadApp(sCode);
+    }
 
+    ;
 
+}
 
 
 
@@ -139,7 +149,7 @@ public class MySampleApplication implements EntryPoint {
 
 
 
-
+/*
 
         final Button button = new Button("Click me");
         final Label label = new Label();
@@ -194,14 +204,14 @@ public class MySampleApplication implements EntryPoint {
 
 
 
-        /*
+
         final fileLoad2=new FileLoad();        //create labels
         Label selectLabel2 = new Label("Select a dir:");
         //add a label
         panel.add(selectLabel2);
         //add fileUpload widget
         panel.add(fileLoad2);
-        */
+
 
 
 
@@ -233,11 +243,11 @@ public class MySampleApplication implements EntryPoint {
                     //submit the form
                     FileLoad.download(labelText.getText(), fileUpload.getName());
                 }
-                */
+                //
 
 
 
-                /*
+                //
                 String sFieldName = labelText.getText();
                 String sContentType = cl.getString(4);
 
@@ -249,7 +259,7 @@ public class MySampleApplication implements EntryPoint {
 
                 DownloadServlet.sendFiles.put(sGUID, itemMy);
                 Log.wInfo("���� �������� � GUID=" + sGUID + ", ���� =" + file.getName() + ", sendFiles.size=" + DownloadServlet.sendFiles.size());
-                */
+                //
 
 
             }
@@ -376,5 +386,7 @@ public class MySampleApplication implements EntryPoint {
     }
 
 
+    */
 
-}
+
+//}
