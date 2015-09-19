@@ -26,6 +26,9 @@ public class MySampleApplication implements EntryPoint {
      * This is the entry point method.
      */
 
+    final protected Panel panel = null;
+    final protected InlineLabel promptLabel = null;
+
     private static void loadApp(String sCode) {
 
 //Create an empty tab panel
@@ -71,9 +74,9 @@ public class MySampleApplication implements EntryPoint {
         };
         panel2.setTitle("Choose Language");
         panel2.setHeight("20px");
-        panel2.setSize("100px","400px");
+        panel2.setSize("100px", "400px");
 
-
+initWidget();
 
         //create titles for tabs
         String tab1Title = "Main";
