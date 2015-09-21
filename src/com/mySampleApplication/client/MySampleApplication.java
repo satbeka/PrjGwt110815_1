@@ -26,8 +26,7 @@ public class MySampleApplication implements EntryPoint {
      * This is the entry point method.
      */
 
-    final protected Panel panel = null;
-    final protected InlineLabel promptLabel = null;
+
 
     private static void loadApp(String sCode) {
 
@@ -46,37 +45,17 @@ public class MySampleApplication implements EntryPoint {
         label3.setHeight("200");
 
         //create panel
-        Panel panel1=new Panel() {
-            @Override
-            public boolean remove(Widget child) {
-                return false;
-            }
-
-            @Override
-            public Iterator<Widget> iterator() {
-                return null;
-            }
-        };
+        DeckPanel panel1=new DeckPanel();
         panel1.setTitle("Connect");
         panel1.setHeight("10px");
         panel1.setSize("100px","400px");
 
-        Panel panel2=new Panel() {
-            @Override
-            public boolean remove(Widget child) {
-                return false;
-            }
-
-            @Override
-            public Iterator<Widget> iterator() {
-                return null;
-            }
-        };
+        Panel panel2=new DeckPanel();
         panel2.setTitle("Choose Language");
         panel2.setHeight("20px");
         panel2.setSize("100px", "400px");
 
-initWidget();
+//initWidget();
 
         //create titles for tabs
         String tab1Title = "Main";
