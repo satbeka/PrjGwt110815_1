@@ -33,13 +33,95 @@ public class MySampleApplication implements EntryPoint {
 //Create an empty tab panel
         TabPanel tabPanel = new TabPanel();
 
+
         /*
+        TabItem iconTab = new TabItem("Main","res/home_16.png");
+        //iconTab.setIcon(Resources.ICONS.table());
+        tabPanel.add(iconTab);
+        */
+
+        DeckPanel panelDP1=new DeckPanel();
+        Label lbl1Tab=new Label();
+        lbl1Tab.setText("    LBL in DP1  ");
+
+        //panel1.add(image);
+
+        //lbl1Tab.getAbsoluteTop();
+        lbl1Tab.setWidth("20");
+
+        panelDP1.add(lbl1Tab);
+        //panel1.setHeight("10px");
+        panelDP1.setSize("100", "40");
+
+
+        tabPanel.setTitle("TabPanel title");
+        //System.out.println("tabPanel.getStyleName()=" + tabPanel.getStyleName());
+        System.out.println("tabPanel.getStylePrimaryName()=" + tabPanel.getStylePrimaryName());
+
+        HorizontalPanel panelIcon1=new HorizontalPanel();
+        Label lblIcon1=new Label("Main");
+        lblIcon1.addStyleName("indTabIcn1");
+        panelIcon1.setTitle("panelICoN1 title");
+        Image image = new Image();
+        image.setUrl("res/home_16.png");
+
+        panelIcon1.add(image);
+        panelIcon1.add(lblIcon1);
+        panelIcon1.setWidth("50");
+
+        tabPanel.add(panelDP1, panelIcon1);
+
+        DeckPanel panelDP2=new DeckPanel();
+        Label lbl2Tab=new Label("    LBL in DP2  ");
+        //lbl1Tab.setText("GgG");
+
+        //panel1.add(image);
+
+        HorizontalPanel panelIcon2=new HorizontalPanel();
+        Label lblIcon2=new Label();
+        lblIcon2.setText(" for Test Only ");
+        lblIcon2.addStyleName("indTabIcn1");
+        panelIcon2.setTitle("panelICoN2 title");
+        Image image2 = new Image();
+        image2.setUrl("res/security_agent_24.png");
+
+        panelIcon2.add(image2);
+        panelIcon2.add(lblIcon2);
+        panelIcon2.setWidth("250");
+        //lbl1Tab.getAbsoluteTop();
+        lbl2Tab.setWidth("50");
+
+        panelDP2.add(lbl2Tab);
+        //panel1.setHeight("10px");
+        //panelDP2.setSize("100", "40");
+        tabPanel.add(panelDP2, panelIcon2);
+
+
+
+        //tabPanel.add(lbl1Tab,"lbl1");
+        //lbl1Tab
+
+        /*
+        Image image = new Image();
+        image.setUrl("res/home_16.png");
+        String tab1Title = "Main";
+        HorizontalPanel panelIcon=new HorizontalPanel();
+        panelIcon.setTitle(tab1Title);
+        panelIcon.add(image);
+        panelIcon.setWidth("20");
+        */
+        //create tabs
+
+
+  /*
+        //tabPanel.add(image);
+
+
         //create contents for tabs of tabpanel
         Label label1 = new Label("This is contents of TAB 1");
         label1.setHeight("200");
         Label label2 = new Label("This is contents of TAB 2");
         label2.setHeight("200");
-*/
 
         Label label3 = new Label("This tab is temporary for test");
         label3.setHeight("200");
@@ -58,20 +140,22 @@ public class MySampleApplication implements EntryPoint {
 //initWidget();
 
         //create titles for tabs
-        String tab1Title = "Main";
+        //String tab1Title = "Main";
         String tab2Title = "For test 2";
         String tab3Title = "For test 3";
 
         //create tabs
-        tabPanel.add(panel1, tab1Title);
-        tabPanel.add(panel2, tab1Title);
+        //tabPanel.add(panel1, tab1Title);
+        tabPanel.add(panel2, tab2Title);
         tabPanel.add(label3, tab3Title);
+*/
+
 
         //select first tab
         tabPanel.selectTab(0);
 
         //set width if tabpanel
-        tabPanel.setWidth("400");
+        tabPanel.setWidth("1500");
 
         // Add the widgets to the root panel.
         RootPanel.get("gwtContainer").add(tabPanel);
