@@ -184,6 +184,11 @@ public class MySampleApplication implements EntryPoint {
         }
 
         loadApp(sCode);
+
+        RootPanel.get("load1").getElement().getStyle().setProperty
+                ("display", "none");
+
+
     }
 
     ;
