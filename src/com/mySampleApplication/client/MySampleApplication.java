@@ -2,19 +2,8 @@ package com.mySampleApplication.client;
 
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.dom.client.Style;
-import com.google.gwt.i18n.server.Message;
-import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.*;
-import com.google.gwt.user.client.rpc.AsyncCallback;
-import com.google.gwt.event.dom.client.ClickHandler;
-import com.google.gwt.event.dom.client.ClickEvent;
-import com.mySampleApplication.server.common.FileLoad;
-
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Iterator;
 
 
 /**
@@ -40,18 +29,18 @@ public class MySampleApplication implements EntryPoint {
         tabPanel.add(iconTab);
         */
 
-        DeckPanel panelDP1=new DeckPanel();
-        Label lbl1Tab=new Label();
-        lbl1Tab.setText("    LBL in DP1  ");
+        DeckPanel panelDPwork=new DeckPanel();
+        Label lbl1TabWork=new Label();
+        lbl1TabWork.setText("    LBL in DP1  ");
 
         //panel1.add(image);
 
         //lbl1Tab.getAbsoluteTop();
-        lbl1Tab.setWidth("20");
+        lbl1TabWork.setWidth("20");
 
-        panelDP1.add(lbl1Tab);
+        panelDPwork.add(lbl1TabWork);
         //panel1.setHeight("10px");
-        panelDP1.setSize("100", "40");
+        panelDPwork.setSize("100", "40");
 
 
         tabPanel.setTitle("TabPanel title");
@@ -59,17 +48,23 @@ public class MySampleApplication implements EntryPoint {
         System.out.println("tabPanel.getStylePrimaryName()=" + tabPanel.getStylePrimaryName());
 
         HorizontalPanel panelIcon1=new HorizontalPanel();
-        Label lblIcon1=new Label("Main");
-        lblIcon1.addStyleName("indTabIcn1");
-        panelIcon1.setTitle("panelICoN1 title");
+        FormWork1 formWork1=new FormWork1();
+        formWork1.panel=panelDPwork;
+        FormPanel formPanel=formWork1.init();
+        //panelDPwork.add(formPanel);
+
+
+        panelIcon1.setTitle("panelICONwork title");
         Image image = new Image();
         image.setUrl("res/home_16.png");
 
+
+
         panelIcon1.add(image);
-        panelIcon1.add(lblIcon1);
+        panelIcon1.add(formWork1.labelW);
         panelIcon1.setWidth("50");
 
-        tabPanel.add(panelDP1, panelIcon1);
+        tabPanel.add(panelDPwork, panelIcon1);
 
         DeckPanel panelDP2=new DeckPanel();
         Label lbl2Tab=new Label("    LBL in DP2  ");
