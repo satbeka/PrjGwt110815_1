@@ -22,49 +22,27 @@ public class MySampleApplication implements EntryPoint {
 //Create an empty tab panel
         TabPanel tabPanel = new TabPanel();
 
-
-        /*
-        TabItem iconTab = new TabItem("Main","res/home_16.png");
-        //iconTab.setIcon(Resources.ICONS.table());
-        tabPanel.add(iconTab);
-        */
-
-        DeckPanel panelDPwork=new DeckPanel();
-        Label lbl1TabWork=new Label();
-        lbl1TabWork.setText("    LBL in DP1  ");
-
-        //panel1.add(image);
-
-        //lbl1Tab.getAbsoluteTop();
-        lbl1TabWork.setWidth("20");
-
-        panelDPwork.add(lbl1TabWork);
-        //panel1.setHeight("10px");
-        panelDPwork.setSize("100", "40");
-
-
         tabPanel.setTitle("TabPanel title");
         //System.out.println("tabPanel.getStyleName()=" + tabPanel.getStyleName());
         System.out.println("tabPanel.getStylePrimaryName()=" + tabPanel.getStylePrimaryName());
 
-        HorizontalPanel panelIcon1=new HorizontalPanel();
-        FormWork1 formWork1=new FormWork1();
-        formWork1.panel=panelDPwork;
-        FormPanel formPanel=formWork1.init();
-        //panelDPwork.add(formPanel);
-
-
-        panelIcon1.setTitle("panelICONwork title");
+        HorizontalPanel panelIconW=new HorizontalPanel();
+        panelIconW.setTitle("panelICONwork title");
         Image image = new Image();
         image.setUrl("res/home_16.png");
 
+        panelIconW.add(image);
+        FormWork1 formWork1=new FormWork1();
+        formWork1.load();
+
+        Label labelW = new Label("Main");
+        labelW.addStyleName("indTabIcn1");
+        panelIconW.add(labelW);
+        panelIconW.setWidth("50");
+
+        tabPanel.add(formWork1.panelDW, panelIconW);
 
 
-        panelIcon1.add(image);
-        panelIcon1.add(formWork1.labelW);
-        panelIcon1.setWidth("50");
-
-        tabPanel.add(panelDPwork, panelIcon1);
 
         DeckPanel panelDP2=new DeckPanel();
         Label lbl2Tab=new Label("    LBL in DP2  ");
