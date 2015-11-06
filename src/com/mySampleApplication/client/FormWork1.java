@@ -15,15 +15,24 @@ public class FormWork1 {
 
 
         DeckPanel deckPanel=new DeckPanel();
-        deckPanel.setSize("500","300");
+        deckPanel.setSize("500", "300");
         deckPanel.addStyleName("deckpanel");
+
+
+
+        //create button bar
+        HorizontalPanel buttonBar = new HorizontalPanel();
+        buttonBar.setSpacing(10);
+        buttonBar.addStyleName("buttonBar");
+        buttonBar.setSize("200","200");
+
 
         //VerticalPanel panelVW = new VerticalPanel();
         Label lblTabWork=new Label();
         lblTabWork.setText("    Form for login  ");
         //panel1.add(image);
         //lbl1Tab.getAbsoluteTop();
-        lblTabWork.setWidth("300");
+        lblTabWork.setSize("300","10");
         lblTabWork.addStyleName("gwt-Green-Border");
 
         /*
@@ -32,7 +41,8 @@ public class FormWork1 {
         panelVW.setSize("1000", "500");
         */
 
-        deckPanel.add(lblTabWork);
+        buttonBar.add(lblTabWork);
+        //deckPanel.add(lblTabWork);
         //panel1.setHeight("10px");
         //deckPanel.setSize("1000", "500");
 
@@ -42,7 +52,8 @@ public class FormWork1 {
         tb.setWidth("200");
 
         tb.setName("textBoxFormElementW");
-        deckPanel.add(tb);
+        buttonBar.add(tb);
+        //deckPanel.add(tb);
 
         // Create a ListBox, giving it a name and
         // some values to be associated with its options.
@@ -51,21 +62,33 @@ public class FormWork1 {
         lb.addItem("item1", "item1");
         lb.addItem("item2", "item2");
         lb.addItem("item3", "item3");
-        lb.setWidth("220");
-        deckPanel.add(lb);
+        lb.setSize("250","250");
+        buttonBar.add(lb);
+        //deckPanel.add(lb);
+
 
         // Add a 'submit' button.
-        deckPanel.add(new Button("Submit", new ClickHandler() {
+        buttonBar.add(new Button("Submit", new ClickHandler() {
             @Override
             public void onClick(ClickEvent event) {
                 System.out.println("---");
             }
         }));
 
+
+        /*
+        VerticalPanel vPanel = new VerticalPanel();
+        vPanel.add(deckPanel);
+        vPanel.add(buttonBar);
+*/
+
+        deckPanel.add(buttonBar);
+
         //deckPanel.add(panelVW);
         panelDW=deckPanel;
 
-
+        //show first label
+        deckPanel.showWidget(0);
 
 
     }

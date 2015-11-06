@@ -5,5 +5,9 @@
     display: block;
     }
 .deckpanel {
-    display: inline-block!important;
+    /*display: inline-block!important;*/
+}
+
+.buttonBar {
+    /*display: inline-block!important;*/
 }
