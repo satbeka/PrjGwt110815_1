@@ -15,13 +15,16 @@ public class FormWork1 {
 
 
         DeckPanel deckPanel=new DeckPanel();
-        deckPanel.setSize("1000","300");
+        deckPanel.setSize("500","300");
+        deckPanel.addStyleName("deckpanel");
+
         //VerticalPanel panelVW = new VerticalPanel();
         Label lblTabWork=new Label();
-        lblTabWork.setText("    LBL in DP1  ");
+        lblTabWork.setText("    Form for login  ");
         //panel1.add(image);
         //lbl1Tab.getAbsoluteTop();
-        lblTabWork.setWidth("20");
+        lblTabWork.setWidth("300");
+        lblTabWork.addStyleName("gwt-Green-Border");
 
         /*
         panelVW.add(lblTabWork);
@@ -31,7 +34,7 @@ public class FormWork1 {
 
         deckPanel.add(lblTabWork);
         //panel1.setHeight("10px");
-        deckPanel.setSize("1000", "500");
+        //deckPanel.setSize("1000", "500");
 
 
         // Create a TextBox, giving it a name so that it will be submitted.

@@ -4,3 +4,6 @@
     font: 11px tahoma,arial,helvetica;
     display: block;
     }
+.deckpanel {
+    display: inline-block!important;
+}

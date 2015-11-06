@@ -1,0 +1,11 @@
+.gwt-Label{
+    font-size: 150%;
+    font-weight: bold;
+    color:red;
+    padding:5px;
+    margin:5px;
+}
+.gwt-Green-Border{
+    border:1px solid green;
+    display: inline!important;
+}
