@@ -4,6 +4,7 @@
     color:red;
     padding:5px;
     margin:5px;
+    /*vertical-align: bottom!important;*/
 }
 .gwt-Green-Border{
     border:5px solid green;

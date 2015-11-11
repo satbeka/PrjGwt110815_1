@@ -15,16 +15,16 @@ public class FormWork1 {
 
 
         DeckPanel deckPanel=new DeckPanel();
-        deckPanel.setSize("500", "300");
+        deckPanel.setSize("500", "500");
         deckPanel.addStyleName("deckpanel");
 
 
 
         //create button bar
-        HorizontalPanel buttonBar = new HorizontalPanel();
-        buttonBar.setSpacing(10);
+        VerticalPanel buttonBar = new VerticalPanel();
+        buttonBar.setSpacing(3);
         buttonBar.addStyleName("buttonBar");
-        buttonBar.setSize("200","200");
+        buttonBar.setSize("200", "500");
 
 
         //VerticalPanel panelVW = new VerticalPanel();
@@ -32,14 +32,10 @@ public class FormWork1 {
         lblTabWork.setText("    Form for login  ");
         //panel1.add(image);
         //lbl1Tab.getAbsoluteTop();
-        lblTabWork.setSize("300","10");
+        lblTabWork.getAbsoluteLeft();
+        lblTabWork.setSize("200", "10");
         lblTabWork.addStyleName("gwt-Green-Border");
-
-        /*
-        panelVW.add(lblTabWork);
-        //panel1.setHeight("10px");
-        panelVW.setSize("1000", "500");
-        */
+        buttonBar.setVerticalAlignment(HasVerticalAlignment.ALIGN_BOTTOM);
 
         buttonBar.add(lblTabWork);
         //deckPanel.add(lblTabWork);
@@ -47,28 +43,42 @@ public class FormWork1 {
         //deckPanel.setSize("1000", "500");
 
 
+        Label lblLogin=new Label();
+        lblLogin.setText("  Your LOGIN:  ");
+        //panel1.add(image);
+        //lbl1Tab.getAbsoluteTop();
+        //lblLogin.getAbsoluteTop();
+        lblLogin.setSize("200", "10");
+        lblLogin.addStyleName("gwt-Label");
+        buttonBar.setVerticalAlignment(HasVerticalAlignment.ALIGN_BOTTOM);
+        buttonBar.add(lblLogin);
         // Create a TextBox, giving it a name so that it will be submitted.
-        final TextBox tb = new TextBox();
-        tb.setWidth("200");
+        TextBox tbLogin = new TextBox();
+        tbLogin.setWidth("200");
+        tbLogin.setName("login");
+        buttonBar.setVerticalAlignment(HasVerticalAlignment.ALIGN_TOP);
+        buttonBar.add(tbLogin);
 
-        tb.setName("textBoxFormElementW");
-        buttonBar.add(tb);
-        //deckPanel.add(tb);
+        Label lblPwd=new Label();
+        lblPwd.setText("  Your Password  ");
+        //panel1.add(image);
+        //lbl1Tab.getAbsoluteTop();
+        //lblPwd.getAbsoluteTop();
+        lblPwd.getAbsoluteTop();
+        lblPwd.setSize("200", "10");
+        lblPwd.addStyleName("gwt-Label");
+        buttonBar.setVerticalAlignment(HasVerticalAlignment.ALIGN_BOTTOM);
+        buttonBar.add(lblPwd);
+        // Create a TextBox, giving it a name so that it will be submitted.
+        TextBox tbPwd = new TextBox();
+        tbPwd.setWidth("200");
 
-        // Create a ListBox, giving it a name and
-        // some values to be associated with its options.
-        ListBox lb = new ListBox();
-        lb.setName("listBoxFormElementW");
-        lb.addItem("item1", "item1");
-        lb.addItem("item2", "item2");
-        lb.addItem("item3", "item3");
-        lb.setSize("250","250");
-        buttonBar.add(lb);
-        //deckPanel.add(lb);
-
+        tbPwd.setName("pwd");
+        buttonBar.setVerticalAlignment(HasVerticalAlignment.ALIGN_TOP);
+        buttonBar.add(tbPwd);
 
         // Add a 'submit' button.
-        buttonBar.add(new Button("Submit", new ClickHandler() {
+        buttonBar.add(new Button("Ok", new ClickHandler() {
             @Override
             public void onClick(ClickEvent event) {
                 System.out.println("---");
