@@ -3,6 +3,7 @@ package com.mySampleApplication.client;
 
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.*;
 
 public class FormWork1 {
@@ -53,11 +54,11 @@ public class FormWork1 {
         buttonBar.setVerticalAlignment(HasVerticalAlignment.ALIGN_BOTTOM);
         buttonBar.add(lblLogin);
         // Create a TextBox, giving it a name so that it will be submitted.
-        TextBox tbLogin = new TextBox();
-        tbLogin.setWidth("200");
-        tbLogin.setName("login");
+        final TextBox txtLogin = new TextBox();
+        txtLogin.setWidth("200");
+        txtLogin.setName("login");
         buttonBar.setVerticalAlignment(HasVerticalAlignment.ALIGN_TOP);
-        buttonBar.add(tbLogin);
+        buttonBar.add(txtLogin);
 
         Label lblPwd=new Label();
         lblPwd.setText("  Your Password  ");
@@ -70,20 +71,33 @@ public class FormWork1 {
         buttonBar.setVerticalAlignment(HasVerticalAlignment.ALIGN_BOTTOM);
         buttonBar.add(lblPwd);
         // Create a TextBox, giving it a name so that it will be submitted.
-        TextBox tbPwd = new TextBox();
-        tbPwd.setWidth("200");
+        final TextBox txtPwd = new TextBox();
+        txtPwd.setWidth("200");
 
-        tbPwd.setName("pwd");
+        txtPwd.setName("pwd");
         buttonBar.setVerticalAlignment(HasVerticalAlignment.ALIGN_TOP);
-        buttonBar.add(tbPwd);
+        buttonBar.add(txtPwd);
 
         // Add a 'submit' button.
-        buttonBar.add(new Button("Ok", new ClickHandler() {
+
+        //add a clickListener to the button
+        Button btn=new Button("btnLogin");
+        btn.setText("Login");
+        btn.addClickHandler(new ClickHandler() {
             @Override
             public void onClick(ClickEvent event) {
-                System.out.println("---");
+                Window.alert("btnLogin clicked!"+txtLogin.getText()+txtPwd.getText());
+
+
+
+
+
             }
-        }));
+        });
+
+
+
+        buttonBar.add(btn);
 
 
         /*

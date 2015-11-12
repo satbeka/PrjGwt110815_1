@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+    <comment>---</comment>
+    <entry key="password">ercb</entry>
+    <entry key="sign_checkTSP">false</entry>
+    <entry key="urlJDBC">jdbc:oracle:thin:@ala-srv-db-tst1.tisr.kz:1521:TEST01</entry>
+
+    <entry key="urlSQLiteJDBC">jdbc:sqlite:C:/work/wl2015f_sqlite.s3db</entry>
+
+    <entry key="username">ercb</entry>
+    <entry key="SQLselSprotsmens">SELECT id,fio,date_birth FROM sportsmens</entry>
+    <entry key="SQLselListUpragnenie">select id,name,short_name from UPRAGNENIE</entry>
+
+    <entry key="SQLselListSbor">SELECT id,name,data_sbora FROM sbor</entry>
+    <entry key="SQLinsSbor">insert into sbor(id,name,data_sbora,short_name) values (?1,'?2',date('?3'),'00')</entry>
+    <entry key="SQLselMaxIdSbor">SELECT max(id) FROM sbor</entry>
+    <entry key="SQLupdSbor">update sbor set name='?',data_sbora=to_date('?','dd.mm.yyyy') where id=?</entry>
+    <entry key="SQLdelSbor">delete sbor where id=?</entry>
+
+
+    <entry key="SQLselListTWLTCSTATUS">select t.ID, t.vTCSTATUS, t.vTCSTATUS_RU from TWLTCSTATUS t</entry>
+    <entry key="SQLinsTWLTCSTATUS">insert into TWLTCSTATUS(id,vTCSTATUS,vTCSTATUS) values (?1,'?2','?3')</entry>
+    <entry key="SQLselMaxIdTWLTCSTATUS">SELECT max(id) FROM TWLTCSTATUS</entry>
+    <entry key="SQLupdTWLTCSTATUS">update TWLTCSTATUS set vTCSTATUS='?1',vTCSTATUS_RU='?2' where id=?3</entry>
+    <entry key="SQLdelTWLTCSTATUS">delete from TWLTCSTATUS where id=?1</entry>
+
+    <entry key="SQLselListTTCPERSONAL">select t.ID, t.vSURNAME, t.vFIRSTNAME, t.vMIDDLENAME from TTCPERSONAL t</entry>
+    <entry key="SQLinsTTCPERSONAL">insert into TTCPERSONAL(id,vSURNAME,vFIRSTNAME,vMIDDLENAME) values (?1,'?2','?3','?4')</entry>
+    <entry key="SQLselMaxIdTTCPERSONAL">SELECT max(id) FROM TTCPERSONAL</entry>
+    <entry key="SQLupdTTCPERSONAL">update TTCPERSONAL set vSURNAME='?1',vFIRSTNAME='?2',vMIDDLENAME='?3' where id=?4</entry>
+    <entry key="SQLdelTTCPERSONAL">delete from TTCPERSONAL where id=?1</entry>
+    <entry key="SQLselIdTTCPERSONAL">select t.ID from TTCPERSONAL t where
+        t.vFIRSTNAME like '?1%' and t.vSURNAME like '?2%'</entry>
+
+
+    <entry key="SQLselListTTCTEAMS">select t.ID, t.vNAME, t.vTEAMDESC from TTCTEAMS t</entry>
+    <entry key="SQLinsTTCTEAMS">insert into TTCTEAMS(id,vNAME,vTEAMDESC) values (?1,'?2','?3')</entry>
+    <entry key="SQLselMaxIdTTCTEAMS">SELECT max(id) FROM TTCTEAMS</entry>
+    <entry key="SQLupdTTCTEAMS">update TTCTEAMS set vNAME='?1',vTEAMDESC='?2' where id=?3</entry>
+    <entry key="SQLdelTTCTEAMS">delete from TTCTEAMS where id=?1</entry>
+    <entry key="SQLselIdTTCTEAMS">select t.ID from TTCTEAMS t where t.vNAME like '?1%'</entry>
+
+
+    <entry key="SQLselListTWLMVALUES">select t.ID, t.vTCAMPID, t.vTCSID, t.vTCTID, t.vTRAININGDATE,t.vTTSEQUENCE,t.vTRAININGID
+        ,t.vTRAININGDUR_V,t.vMPULSEP10S_b from TWLMVALUES t</entry>
+    <entry key="SQLinsTWLMVALUES">insert into TWLMVALUES(id,vTCAMPID,vTCSID,vTCTID,vTRAININGDATE,vTTSEQUENCE,vTRAININGID,vTRAININGDUR_V,vMPULSEP10S_b)
+        values (?1,'?2','?3','?4','?5','?6','?7','?8','?9')</entry>
+    <entry key="SQLselMaxIdTWLMVALUES">SELECT max(id) FROM TWLMVALUES</entry>
+    <entry key="SQLupdTWLMVALUES">update TWLMVALUES set vTCAMPID='?1',vTCSID='?2',vTCTID='?3',vTRAININGDATE='?4',vTTSEQUENCE='?5'
+        ,vTRAININGID='?6',vTRAININGDUR_V='?7',vMPULSEP10S_b='?8' where id=?4</entry>
+    <entry key="SQLdelTWLMVALUES">delete from TWLMVALUES where id=?1</entry>
+    <entry key="SQLselListTWLMVALUES_wherePersAndTeam">select t.ID, t.vTCAMPID, t.vTCSID, t.vTCTID, t.vTRAININGDATE,t.vTTSEQUENCE,t.vTRAININGID
+        ,t.vTRAININGDUR_V,t.vMPULSEP10S_b from TWLMVALUES t where t.vTCSID='?1' and t.vTCTID='?2'</entry>
+
+
+
+</properties>
