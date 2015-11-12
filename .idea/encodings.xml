@@ -3,12 +3,6 @@
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/lib/gwtupload" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/lib/ora" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/OracleDB.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/OracleSQL.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/PropertiesBuilder.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/SQLiteDB.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/SQLiteSQL.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/UserData.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/com/mySampleApplication/server/ApplicationThread.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/com/mySampleApplication/server/DownloadFileServlet.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/com/mySampleApplication/server/FileItemMy.java" charset="UTF-8" />
